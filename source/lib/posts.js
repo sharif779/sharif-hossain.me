@@ -114,3 +114,44 @@ function uniqueSlug(baseSlug) {
 
   return slug;
 }
+
+export function getPostForAdmin(slug) {
+  return normalizePost(
+    db.prepare(`SELECT ${postColumns} FROM posts WHERE slug = ?`).get(slug)
+  );
+}
+
+export function updatePost(slug, input) {
+  const now = new Date().toISOString();
+  const tags = input.tags
+    .split(",")
+    .map((t) => t.trim())
+    .filter(Boolean);
+
+  db.prepare(
+    `UPDATE posts
+     SET title      = @title,
+         excerpt    = @excerpt,
+         content    = @content,
+         category   = @category,
+         tags       = @tags,
+         featured   = @featured,
+         published  = @published,
+         updated_at = @updated_at
+     WHERE slug = @slug`
+  ).run({
+    slug,
+    title: input.title.trim(),
+    excerpt: input.excerpt.trim(),
+    content: input.content.trim(),
+    category: (input.category || "Engineering").trim(),
+    tags: JSON.stringify(tags),
+    featured: input.featured ? 1 : 0,
+    published: input.published ? 1 : 0,
+    updated_at: now,
+  });
+}
+
+export function deletePost(slug) {
+  db.prepare("DELETE FROM posts WHERE slug = ?").run(slug);
+}
