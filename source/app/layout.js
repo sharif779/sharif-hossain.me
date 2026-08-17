@@ -21,11 +21,11 @@ export const metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: "Sharif Hossain | Cloud & DevSecOps Engineer",
+    default: "Sharif Hossain | Cloud, DevSecOps & AI Engineer",
     template: "%s | Sharif Hossain",
   },
   description:
-    "Sharif Hossain is an Assistant Principal Software Engineer with 8+ years of experience in cloud infrastructure, DevSecOps, microservices, CI/CD, Kubernetes, AWS, and Linux systems engineering.",
+    "Sharif Hossain is an Assistant Principal Software Engineer II with 10+ years of experience in cloud infrastructure, DevSecOps, cybersecurity, microservices, agentic AI/LLM systems, CI/CD, Kubernetes, AWS, and Linux systems engineering.",
   keywords: [
     "Sharif Hossain",
     "Cloud Engineer",
@@ -43,6 +43,10 @@ export const metadata = {
     "Asterisk",
     "PSM I",
     "Scrum Master",
+    "LLM",
+    "Agentic AI",
+    "Cybersecurity",
+    "SIEM",
   ],
   authors: [{ name: "Sharif Hossain", url: SITE_URL }],
   creator: "Sharif Hossain",
@@ -58,9 +62,9 @@ export const metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Sharif Hossain",
-    title: "Sharif Hossain | Cloud & DevSecOps Engineer",
+    title: "Sharif Hossain | Cloud, DevSecOps & AI Engineer",
     description:
-      "Assistant Principal Software Engineer specialising in cloud infrastructure, DevSecOps, microservices, CI/CD, and secure platform engineering.",
+      "Assistant Principal Software Engineer II specialising in cloud infrastructure, DevSecOps, cybersecurity, microservices, agentic AI/LLM systems, CI/CD, and secure platform engineering.",
     images: [
       {
         url: "/hero-cloudsec.png",
@@ -73,9 +77,9 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Sharif Hossain | Cloud & DevSecOps Engineer",
+    title: "Sharif Hossain | Cloud, DevSecOps & AI Engineer",
     description:
-      "Assistant Principal Software Engineer with 8+ years in cloud infrastructure, DevSecOps, microservices, and CI/CD systems.",
+      "Assistant Principal Software Engineer II with 10+ years in cloud infrastructure, DevSecOps, microservices, agentic AI/LLM systems, and CI/CD systems.",
     images: ["/hero-cloudsec.png"],
   },
 

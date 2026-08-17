@@ -626,7 +626,7 @@ pre {
    ========================================================= */
 .credSection {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   width: min(1200px, calc(100% - 40px));
   margin: 0 auto;
@@ -1016,6 +1016,7 @@ pre {
   .stackGrid      { grid-template-columns: repeat(2, 1fr); }
   .projectsGrid   { grid-template-columns: repeat(2, 1fr); }
   .postGrid       { grid-template-columns: repeat(2, 1fr); }
+  .credSection    { grid-template-columns: 1fr; }
   .footerInner    { grid-template-columns: 1fr 1fr; }
 }
 

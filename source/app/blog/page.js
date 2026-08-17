@@ -7,18 +7,18 @@ import { deletePostAction } from "@/app/actions";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Blog – Cloud, DevSecOps & Linux Engineering Notes",
+  title: "Blog – Cloud, DevSecOps, AI & Linux Engineering Notes",
   description:
-    "Engineering blog by Sharif Hossain covering cloud infrastructure, DevSecOps, Linux, microservices, CI/CD pipelines, VoIP, and platform engineering.",
+    "Engineering blog by Sharif Hossain covering cloud infrastructure, DevSecOps, cybersecurity, agentic AI/LLM systems, Linux, microservices, CI/CD pipelines, VoIP, and platform engineering.",
   alternates: {
     canonical: "https://sharif-hossain.me/blog",
   },
   openGraph: {
     type: "website",
     url: "https://sharif-hossain.me/blog",
-    title: "Blog – Cloud, DevSecOps & Linux Engineering Notes",
+    title: "Blog – Cloud, DevSecOps, AI & Linux Engineering Notes",
     description:
-      "In-depth notes on cloud infrastructure, DevSecOps, Linux, microservices, CI/CD, and platform engineering by Sharif Hossain.",
+      "In-depth notes on cloud infrastructure, DevSecOps, cybersecurity, agentic AI/LLM systems, Linux, microservices, CI/CD, and platform engineering by Sharif Hossain.",
   },
 };
 
@@ -39,7 +39,7 @@ export default async function BlogPage({ searchParams }) {
       </nav>
       <header className="blogHeader">
         <span className="eyebrow">Engineering Blog</span>
-        <h1>Cloud, DevSecOps, Linux, and product engineering notes.</h1>
+        <h1>Cloud, DevSecOps, AI/LLM, Linux, and product engineering notes.</h1>
       </header>
       <form className="searchBar">
         <Search size={18} />

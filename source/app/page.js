@@ -5,43 +5,45 @@ import {
   Award,
   BadgeCheck,
   Blocks,
+  BrainCircuit,
   CloudCog,
   Code2,
   Database,
   Download,
   GitBranch,
   Globe,
-  Layers3,
+  Lock,
   Mail,
   MapPin,
   Network,
   Phone,
+  PhoneCall,
   Server,
   ShieldCheck,
   TerminalSquare,
   Users,
-  Workflow,
 } from "lucide-react";
 import { getFeaturedPosts } from "@/lib/posts";
 
 const capabilities = [
-  { icon: Layers3, label: "Software Architecture", text: "System design, service boundaries, modular architecture, technical documentation" },
-  { icon: Network, label: "Microservices", text: "Distributed services, API design, event-aware workflows, integration contracts" },
-  { icon: CloudCog, label: "Cloud Platforms", text: "AWS, Google Cloud, Kubernetes, Docker, Linux hardening" },
-  { icon: GitBranch, label: "Delivery Systems", text: "CI/CD, Jenkins, release automation, deployment reliability" },
-  { icon: ShieldCheck, label: "DevSecOps", text: "Secure pipelines, access control, system hardening, payment safety" },
-  { icon: Database, label: "Data Backplanes", text: "Elasticsearch, BigQuery, PostgreSQL, MySQL, SQLite" },
-  { icon: Workflow, label: "Platform Tooling", text: "Automation, monitoring, build tools, internal systems, operational dashboards" },
-  { icon: Users, label: "Team Leadership", text: "Technical mentorship, cross-functional alignment, Agile/Scrum facilitation" },
+  { icon: Users, label: "Project & Team Leadership", text: "Agile/Scrum facilitation, project management, cross-functional team leadership" },
+  { icon: CloudCog, label: "Cloud & Infrastructure", text: "AWS, Google Cloud, Docker, Kubernetes, Ansible, Jenkins" },
+  { icon: Database, label: "Big Data & Analytics", text: "Elasticsearch, Apache Spark, Google BigQuery, Hadoop" },
+  { icon: PhoneCall, label: "Networking & VoIP", text: "Asterisk, FreeSWITCH, enterprise networking solutions" },
+  { icon: Server, label: "Database Management", text: "PostgreSQL, MySQL, SQLite — design, optimization, replication" },
+  { icon: BrainCircuit, label: "AI, LLM & Agentic AI", text: "LLMs, Generative AI, agentic AI, AI agents, local LLM deployment, LLM integration & orchestration" },
+  { icon: Network, label: "Microservices & Distributed Systems", text: "RESTful APIs, service-oriented architecture, API gateways, service discovery" },
+  { icon: ShieldCheck, label: "Cybersecurity & DevSecOps", text: "SIEM/XDR/SOAR, IDS/IPS, vulnerability management, threat detection, incident response, server hardening" },
 ];
 
 const techStack = [
   { category: "Cloud & Infrastructure", items: ["AWS", "Google Cloud", "Docker", "Kubernetes", "Ansible", "Jenkins"] },
   { category: "Languages", items: ["PHP", "Python", "JavaScript", "TypeScript", "C/C++", "Perl", "Shell"] },
-  { category: "Frameworks", items: ["Laravel", "Django", "React.js", "Next.js", "Angular", "Node.js"] },
-  { category: "Data & Analytics", items: ["Elasticsearch", "Apache Spark", "BigQuery", "PostgreSQL", "MySQL"] },
+  { category: "Frameworks", items: ["Laravel", "CodeIgniter", "Django", "React.js", "Next.js", "Angular", "Node.js"] },
+  { category: "AI & LLM", items: ["LLMs", "Generative AI", "Agentic AI", "AI Agents", "Local LLM Deployment", "LLM Orchestration"] },
+  { category: "Big Data & Analytics", items: ["Elasticsearch", "Apache Spark", "BigQuery", "Hadoop", "PostgreSQL", "MySQL"] },
   { category: "VoIP & Telecom", items: ["Asterisk", "FreeSWITCH", "DIDWW", "DIDX"] },
-  { category: "OS & Security", items: ["Linux/Unix", "Shell Scripting", "Server Hardening", "Agile/Scrum"] },
+  { category: "Security & Ops", items: ["SIEM/XDR/SOAR", "IDS/IPS", "Server Hardening", "Linux/Unix", "Agile/Scrum"] },
 ];
 
 const projects = [
@@ -51,14 +53,19 @@ const projects = [
     text: "In-flight connectivity with aircraft-to-ground real-time communication protocol, Linux module customization, and Elasticsearch-powered operational analytics.",
   },
   {
-    title: "Microservice Platforms",
-    tag: "Architecture",
-    text: "Service-oriented architecture with clear API contracts, independent deployment paths, and maintainable domain boundaries at scale.",
+    title: "Asterisk & FreeSWITCH Core Dev",
+    tag: "VoIP",
+    text: "Core contributions to Asterisk and FreeSWITCH, carrier integrations with DIDWW and DIDX, and telecom platforms serving diverse global needs.",
   },
   {
-    title: "VoIP Platforms",
-    tag: "Telecom",
-    text: "Core Asterisk and FreeSWITCH development, global virtual number services, comprehensive billing systems, and telecom integrations.",
+    title: "Virtual Phone Service",
+    tag: "Telecom SaaS",
+    text: "Worldwide virtual phone number service with server-side architecture designed and led end-to-end from launch onward.",
+  },
+  {
+    title: "VoIP Billing System",
+    tag: "Platform",
+    text: "Comprehensive billing system for VoIP operations, streamlining rating, invoicing, and account management at carrier scale.",
   },
   {
     title: "SaaS for RMM",
@@ -68,21 +75,16 @@ const projects = [
   {
     title: "Embedded Data Links",
     tag: "Systems",
-    text: "Efficient protocols for secure and reliable system-to-system data transfer in embedded environments.",
-  },
-  {
-    title: "Licensing Module",
-    tag: "Platform",
-    text: "Robust licensing system with secure payment integrations supporting various billing and subscription models.",
+    text: "Efficient, secure protocols for reliable system-to-system data transfer in embedded environments.",
   },
 ];
 
 const SITE_URL = "https://sharif-hossain.me";
 
 export const metadata = {
-  title: "Sharif Hossain | Cloud & DevSecOps Engineer",
+  title: "Sharif Hossain | Cloud, DevSecOps & AI Engineer",
   description:
-    "Sharif Hossain is an Assistant Principal Software Engineer with 8+ years of experience in cloud infrastructure, DevSecOps, microservices, CI/CD, Kubernetes, AWS, and Linux systems engineering.",
+    "Sharif Hossain is an Assistant Principal Software Engineer II with 10+ years of experience in cloud infrastructure, DevSecOps, cybersecurity, microservices, agentic AI/LLM systems, CI/CD, Kubernetes, AWS, and Linux systems engineering.",
   alternates: {
     canonical: SITE_URL,
   },
@@ -99,14 +101,14 @@ const personSchema = {
   url: SITE_URL,
   email: "sharif.aiub.20@gmail.com",
   telephone: "+8801621561651",
-  jobTitle: "Assistant Principal Software Engineer",
+  jobTitle: "Assistant Principal Software Engineer II",
   worksFor: {
     "@type": "Organization",
-    name: "Stitel Networks, LLC",
+    name: "Brotecs Technologies Limited",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Phoenix",
-      addressCountry: "US",
+      addressLocality: "Dhaka",
+      addressCountry: "BD",
     },
   },
   address: {
@@ -116,25 +118,37 @@ const personSchema = {
   },
   sameAs: [SITE_URL],
   knowsAbout: [
-    "Cloud Engineering", "DevSecOps", "Software Architecture",
+    "Cloud Engineering", "DevSecOps", "Cybersecurity", "Software Architecture",
     "Microservices", "CI/CD", "AWS", "Google Cloud", "Kubernetes",
-    "Docker", "Ansible", "Jenkins", "Elasticsearch", "FreeSWITCH",
-    "Asterisk", "Linux", "PHP", "Python", "JavaScript", "TypeScript",
+    "Docker", "Ansible", "Jenkins", "Elasticsearch", "Apache Spark", "BigQuery",
+    "FreeSWITCH", "Asterisk", "Linux", "PHP", "Python", "JavaScript", "TypeScript",
+    "Large Language Models", "Generative AI", "Agentic AI",
     "Scrum", "Agile",
   ],
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "American International University-Bangladesh",
   },
-  hasCredential: {
-    "@type": "EducationalOccupationalCredential",
-    credentialCategory: "certification",
-    name: "Professional Scrum Master™ I (PSM I)",
-    recognizedBy: {
-      "@type": "Organization",
-      name: "Scrum.org",
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "certification",
+      name: "Professional Scrum Master™ I (PSM I)",
+      recognizedBy: {
+        "@type": "Organization",
+        name: "Scrum.org",
+      },
     },
-  },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "certification",
+      name: "Ethical Hacker",
+      recognizedBy: {
+        "@type": "Organization",
+        name: "Cisco Networking Academy (NetAcad)",
+      },
+    },
+  ],
 };
 
 const websiteSchema = {
@@ -143,7 +157,7 @@ const websiteSchema = {
   url: SITE_URL,
   name: "Sharif Hossain",
   description:
-    "Personal site and engineering blog of Sharif Hossain – Cloud & DevSecOps Engineer.",
+    "Personal site and engineering blog of Sharif Hossain – Cloud, DevSecOps & AI Engineer.",
   author: { "@type": "Person", name: "Sharif Hossain" },
   potentialAction: {
     "@type": "SearchAction",
@@ -191,7 +205,7 @@ export default function HomePage() {
           <div className="heroBadge">
             <span className="statusDot" aria-hidden="true" />
             <BadgeCheck size={15} />
-            Cloud Engineering · DevSecOps · PSM I Certified
+            Cloud Engineering · DevSecOps · AI/LLM · PSM I Certified
           </div>
           <h1>
             Building secure,
@@ -201,8 +215,8 @@ export default function HomePage() {
             cloud systems.
           </h1>
           <p>
-            Assistant Principal Software Engineer with 8+ years designing cloud infrastructure,
-            microservices, CI/CD pipelines, and platforms that scale under real-world pressure.
+            Assistant Principal Software Engineer II with 10+ years designing cloud infrastructure,
+            microservices, CI/CD pipelines, and agentic AI systems that scale under real-world pressure.
           </p>
           <div className="heroActions">
             <Link href="/blog" className="primaryAction">
@@ -213,7 +227,7 @@ export default function HomePage() {
             </a>
           </div>
           <div className="heroPills">
-            {["AWS", "Kubernetes", "Docker", "CI/CD", "Linux", "FreeSWITCH"].map((t) => (
+            {["AWS", "Kubernetes", "Docker", "CI/CD", "LLMs", "FreeSWITCH"].map((t) => (
               <span key={t} className="heroPill">{t}</span>
             ))}
           </div>
@@ -234,8 +248,8 @@ export default function HomePage() {
         </div>
         <div className="statDivider" aria-hidden="true" />
         <div className="statItem">
-          <strong>Phoenix</strong>
-          <span>Stitel Networks, LLC</span>
+          <strong>Dhaka</strong>
+          <span>Brotecs Technologies Limited</span>
         </div>
       </div>
 
@@ -264,13 +278,13 @@ export default function HomePage() {
           <p>
             I operate at the intersection of software architecture, cloud infrastructure,
             and platform security. My work spans microservices, CI/CD, Linux systems,
-            VoIP platforms, and embedded communications — always with an eye on operational
-            excellence and team growth.
+            VoIP platforms, embedded communications, and — increasingly — agentic AI and
+            LLM-powered automation, always with an eye on operational excellence and team growth.
           </p>
           <p className="aboutMuted">
-            Currently at <strong>Stitel Networks, LLC</strong> as an Assistant Principal
-            Software Engineer, leading technical decisions and mentoring engineering teams
-            since June 2017.
+            Currently at <strong>Brotecs Technologies Limited</strong> as an Assistant
+            Principal Software Engineer II, leading technical decisions and mentoring
+            engineering teams since June 2017.
           </p>
           <div className="aboutChips">
             <span><Code2 size={12} /> Microservices</span>
@@ -326,10 +340,11 @@ export default function HomePage() {
   cloud:   [AWS, GCP, K8s, Docker]
   code:    [PHP, Python, JS/TS, C++]
   data:    [ES, Spark, BigQuery, PG]
+  ai:      [LLMs, Agentic AI, RAG]
   telecom: [Asterisk, FreeSWITCH]
 process:
   deliver: CI/CD · release automation
-  secure:  hardening · access control
+  secure:  SIEM/SOAR · IDS/IPS · hardening
   observe: logs · metrics · impact
 lead:
   mentor: junior & mid engineers
@@ -383,6 +398,15 @@ lead:
           <BadgeCheck size={52} className="credBadgeIcon" />
         </div>
         <div className="credCard">
+          <ShieldCheck size={36} className="credMainIcon" />
+          <div className="credInfo">
+            <span className="eyebrow">Certification</span>
+            <h3>Ethical Hacker</h3>
+            <p>Cisco Networking Academy (NetAcad) · Issued July 2026</p>
+          </div>
+          <Lock size={52} className="credBadgeIcon" />
+        </div>
+        <div className="credCard">
           <Globe size={36} className="credMainIcon" />
           <div className="credInfo">
             <span className="eyebrow">Education</span>
@@ -429,7 +453,7 @@ lead:
               <TerminalSquare size={22} />
               <span>Sharif Hossain</span>
             </div>
-            <p>Cloud & DevSecOps Engineer · Assistant Principal Software Engineer</p>
+            <p>Cloud, DevSecOps & AI Engineer · Assistant Principal Software Engineer II</p>
             <p className="footerSub">Building secure, scalable platforms since 2017.</p>
           </div>
           <div className="footerContact">
@@ -447,7 +471,7 @@ lead:
           </div>
         </div>
         <div className="footerBottom">
-          <span>© 2025 Sharif Hossain. All rights reserved.</span>
+          <span>© 2026 Sharif Hossain. All rights reserved.</span>
           <span>sharif-hossain.me · Dhaka, Bangladesh</span>
         </div>
       </footer>
