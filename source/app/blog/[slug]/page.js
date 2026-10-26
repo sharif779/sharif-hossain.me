@@ -115,7 +115,7 @@ export default async function PostPage({ params }) {
           <p className="articleExcerpt">{post.excerpt}</p>
           <div className="articleTags">{post.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
           <div className="articleBody">
-            {post.content.split("\n\n").map((paragraph) => (
+            {post.content.split(/\r?\n\s*\r?\n/).map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
