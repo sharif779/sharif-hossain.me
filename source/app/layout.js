@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import ChatWidget from "./components/ChatWidget";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -99,7 +100,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <ChatWidget />
+      </body>
     </html>
   );
 }

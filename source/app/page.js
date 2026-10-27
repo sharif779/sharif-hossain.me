@@ -205,7 +205,7 @@ export default function HomePage() {
           <div className="heroBadge">
             <span className="statusDot" aria-hidden="true" />
             <BadgeCheck size={15} />
-            Cloud Engineering · DevSecOps · AI/LLM · PSM I Certified
+            Cloud Engineering · Tech Lead · DevSecOps · AI/LLM · PSM I Certified
           </div>
           <h1>
             Building secure,
@@ -453,7 +453,8 @@ lead:
               <TerminalSquare size={22} />
               <span>Sharif Hossain</span>
             </div>
-            <p>Cloud, DevSecOps & AI Engineer · Assistant Principal Software Engineer II</p>
+            <p>Assistant Principal Software Engineer II </p>
+            <p>Technical Lead - Cloud, Cyber Security & AIOps</p>
             <p className="footerSub">Building secure, scalable platforms since 2017.</p>
           </div>
           <div className="footerContact">
@@ -471,7 +472,7 @@ lead:
           </div>
         </div>
         <div className="footerBottom">
-          <span>© 2026 Sharif Hossain. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Sharif Hossain. All rights reserved.</span>
           <span>sharif-hossain.me · Dhaka, Bangladesh</span>
         </div>
       </footer>

@@ -7,4 +7,7 @@ out/
 
 data/*.sqlite-shm
 data/*.sqlite-wal
+data/resume.index.pkl
 npm-debug.log*
+pagewise-out.log
+pagewise-err.log

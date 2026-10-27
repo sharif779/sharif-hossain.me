@@ -96,6 +96,10 @@ Minimum required variables:
 # Secret used to sign admin session cookies.
 # Generate with: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 AUTH_SECRET=replace_with_a_long_random_secret
+
+# Base URL of the pagewise Q&A server (set up in step 11). Leave as-is if
+# pagewise runs on the same host — it's only ever called server-side.
+PAGEWISE_API_URL=http://127.0.0.1:8000
 ```
 
 ---
@@ -152,7 +156,78 @@ Useful PM2 commands:
 
 ---
 
-## 11. Install and configure Nginx
+## 11. Install and run the pagewise chat Q&A server
+
+The site's chat widget (bottom-right bubble) answers visitor questions about
+the resume via [pagewise](https://pypi.org/project/pagewise/), a small
+extractive Q&A server — no LLM, no API key. It runs as its own process on
+**127.0.0.1:8000** and is never exposed directly; the Next.js app proxies to
+it through `/api/chat` using `PAGEWISE_API_URL`.
+
+### Install Python and pagewise
+
+Debian 12 blocks `pip install` into the system Python (PEP 668), so use a
+virtualenv:
+
+```bash
+# As appuser
+apt install -y python3 python3-venv python3-pip   # as root, if missing
+
+python3 -m venv ~/pagewise-env
+source ~/pagewise-env/bin/activate
+
+pip install --upgrade pip
+pip install "pagewise[server]"
+
+# Optional: better paraphrase matching on document fallback (~80MB download,
+# CPU-only). Not required — the seeded FAQs below don't need it.
+pip install "pagewise[semantic]"
+```
+
+### Build the resume index
+
+From the project directory, with the venv still active:
+
+```bash
+cd ~/sharif-hossain.me/source
+python scripts/pagewise_ingest.py
+```
+
+This parses `public/Sharif_Hossain_Resume.pdf` and seeds ~26 hand-written FAQ
+entries (experience, title, employer, certs, education, skills, contact).
+FAQ entries are matched first and take priority over raw document extraction,
+which is what keeps answers accurate — the resume PDF is bullet-heavy, so
+pagewise's sentence-level extraction alone produces poor fragments. Re-run
+this script any time the resume PDF or the FAQ list in
+`scripts/pagewise_ingest.py` changes.
+
+This writes `data/resume.index.pkl`, which is **not** committed to git
+(see `.gitignore`) — it must be rebuilt on each host after a fresh clone.
+
+### Run it with PM2
+
+```bash
+pm2 start "~/pagewise-env/bin/pagewise serve --index data/resume.index.pkl --port 8000" \
+  --name "pagewise-qa" --interpreter none --cwd ~/sharif-hossain.me/source
+
+pm2 save
+```
+
+`--host` defaults to `127.0.0.1` — leave it that way. The pagewise server has
+no authentication, so it must never be reachable from outside the box;
+Nginx (step 12) only ever proxies to the main app on port 3005, not to 8000.
+
+Useful commands:
+
+| Command | Purpose |
+|---|---|
+| `pm2 logs pagewise-qa` | Tail the Q&A server's logs |
+| `pm2 restart pagewise-qa` | Restart after rebuilding the index |
+| `curl http://127.0.0.1:8000/health` | Confirm it's up and an index is loaded |
+
+---
+
+## 12. Install and configure Nginx
 
 ```bash
 # Back to root
@@ -203,7 +278,7 @@ systemctl reload nginx
 
 ---
 
-## 12. Enable HTTPS with Let's Encrypt (Certbot)
+## 13. Enable HTTPS with Let's Encrypt (Certbot)
 
 ```bash
 apt install -y certbot python3-certbot-nginx
@@ -219,7 +294,7 @@ certbot renew --dry-run
 
 ---
 
-## 13. Deploying updates
+## 14. Deploying updates
 
 ```bash
 su - appuser
@@ -235,9 +310,18 @@ pm2 restart sharif-hossain-me  # PM2 will pick up the new .next directory
 > _"Could not find a production build in the .next directory"_.  
 > Always run `pnpm build` first.
 
+If the pull changed `public/Sharif_Hossain_Resume.pdf` or the FAQ list in
+`scripts/pagewise_ingest.py`, also rebuild and restart the Q&A server:
+
+```bash
+source ~/pagewise-env/bin/activate
+python scripts/pagewise_ingest.py
+pm2 restart pagewise-qa
+```
+
 ---
 
-## 14. Persistent SQLite data
+## 15. Persistent SQLite data
 
 The SQLite database lives at `data/blog.sqlite` inside the project directory. Back it up before pulling updates that change the schema:
 
@@ -258,16 +342,17 @@ crontab -e
 
 ---
 
-## 15. Security hardening checklist
+## 16. Security hardening checklist
 
 - [ ] `AUTH_SECRET` is a cryptographically random 32+ byte hex string
 - [ ] `/admin` route is accessible only over HTTPS
 - [ ] SSH password authentication is disabled (`PasswordAuthentication no` in `/etc/ssh/sshd_config`)
-- [ ] UFW is enabled with only ports 22, 80, and 443 open
+- [ ] UFW is enabled with only ports 22, 80, and 443 open (8000/pagewise is never opened in UFW — it's only reachable via `127.0.0.1`)
 - [ ] Nginx `server_tokens off;` is set in `/etc/nginx/nginx.conf`
 - [ ] Certbot auto-renewal is active (`systemctl status certbot.timer`)
 - [ ] The SQLite `data/` directory is not publicly accessible (Nginx does not serve it directly — the app handles all routes)
 - [ ] `data/` is excluded from the git repository (confirm in `.gitignore`)
+- [ ] pagewise is running with `--host 127.0.0.1` (the default) — never `0.0.0.0`, since the server has no authentication
 
 ---
 
@@ -281,3 +366,7 @@ crontab -e
 | Nginx config | `/etc/nginx/sites-available/sharif-hossain.me` |
 | SQLite data | `data/blog.sqlite` |
 | Node.js version | 22.x |
+| pagewise Q&A port | 8000 (localhost only) |
+| pagewise PM2 process name | `pagewise-qa` |
+| pagewise venv | `~/pagewise-env` |
+| pagewise index | `data/resume.index.pkl` (gitignored, rebuild via `python scripts/pagewise_ingest.py`) |

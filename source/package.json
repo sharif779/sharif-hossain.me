@@ -9,7 +9,9 @@
     "start": "next start -p 3005 -H 127.0.0.1",
     "deploy": "next build && next start -p 3005 -H 127.0.0.1",
     "seed": "node --no-warnings scripts/seed.js",
-    "admin:password": "node --no-warnings scripts/set-admin-password.js"
+    "admin:password": "node --no-warnings scripts/set-admin-password.js",
+    "pagewise:ingest": "python scripts/pagewise_ingest.py",
+    "pagewise:serve": "pagewise serve --index data/resume.index.pkl --port 8000"
   },
   "keywords": [],
   "author": "",
