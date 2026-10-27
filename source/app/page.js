@@ -187,6 +187,10 @@ export default function HomePage() {
         <div className="heroOrb heroOrb1" aria-hidden="true" />
         <div className="heroOrb heroOrb2" aria-hidden="true" />
 
+        <div className="heroAvatar" aria-hidden="true">
+          <Image src="/hero-avatar.png" alt="" width={1024} height={765} />
+        </div>
+
         <nav className="topbar" aria-label="Primary navigation">
           <Link href="/" className="brand">
             <TerminalSquare size={20} />
