@@ -82,23 +82,31 @@ const projects = [
 const SITE_URL = "https://sharif-hossain.me";
 
 export const metadata = {
-  title: "Sharif Hossain | Cloud, DevSecOps & AI Engineer",
+  // Absolute title so the layout template does not append "| Sharif Hossain" twice.
+  title: { absolute: "Sharif Hossain | Software Engineer in Bangladesh – Cloud, DevSecOps & AI" },
   description:
-    "Sharif Hossain is an Assistant Principal Software Engineer II with 10+ years of experience in cloud infrastructure, DevSecOps, cybersecurity, microservices, agentic AI/LLM systems, CI/CD, Kubernetes, AWS, and Linux systems engineering.",
+    "Sharif Hossain is an Assistant Principal Software Engineer II in Dhaka, Bangladesh with 10+ years of experience in cloud infrastructure, DevSecOps, cybersecurity, microservices, agentic AI/LLM systems, CI/CD, Kubernetes, AWS, and Linux systems engineering.",
   alternates: {
     canonical: SITE_URL,
   },
-  openGraph: {
-    type: "website",
-    url: SITE_URL,
-  },
+  // No page-level openGraph here: in Next.js it would replace the layout's
+  // openGraph entirely and drop og:image / og:title.
 };
+
+const SOCIAL_PROFILES = [
+  "https://www.linkedin.com/in/sharif779/",
+  "https://www.facebook.com/sharif.aiub/",
+];
 
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Sharif Hossain",
   url: SITE_URL,
+  image: `${SITE_URL}/sharif-office.png`,
+  description:
+    "Assistant Principal Software Engineer II in Dhaka, Bangladesh specialising in cloud infrastructure, DevSecOps, cybersecurity, and agentic AI/LLM systems.",
+  nationality: { "@type": "Country", name: "Bangladesh" },
   email: "sharif.aiub.20@gmail.com",
   telephone: "+8801621561651",
   jobTitle: "Assistant Principal Software Engineer II",
@@ -116,7 +124,7 @@ const personSchema = {
     addressLocality: "Dhaka",
     addressCountry: "BD",
   },
-  sameAs: [SITE_URL],
+  sameAs: SOCIAL_PROFILES,
   knowsAbout: [
     "Cloud Engineering", "DevSecOps", "Cybersecurity", "Software Architecture",
     "Microservices", "CI/CD", "AWS", "Google Cloud", "Kubernetes",
@@ -212,6 +220,9 @@ export default function HomePage() {
             Cloud Engineering · Tech Lead · DevSecOps · AI/LLM · PSM I Certified
           </div>
           <h1>
+            <span className="heroName">
+              Sharif Hossain · Software Engineer in Dhaka, Bangladesh
+            </span>
             Building secure,
             <br />
             <span className="gradientText">production-grade</span>
@@ -219,7 +230,7 @@ export default function HomePage() {
             cloud systems.
           </h1>
           <p>
-            Assistant Principal Software Engineer II with 10+ years designing cloud infrastructure,
+            Assistant Principal Software Engineer II based in Bangladesh, with 10+ years designing cloud infrastructure,
             microservices, CI/CD pipelines, and agentic AI systems that scale under real-world pressure.
           </p>
           <div className="heroActions">

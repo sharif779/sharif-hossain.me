@@ -250,6 +250,17 @@ img { display: block; }
   margin: 0 0 22px;
 }
 
+.hero h1 .heroName {
+  display: block;
+  font-size: clamp(13px, 1.5vw, 17px);
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 18px;
+}
+
 .hero p {
   max-width: 580px;
   color: rgba(255,255,255,.6);

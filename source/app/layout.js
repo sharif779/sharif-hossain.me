@@ -22,13 +22,18 @@ export const metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: "Sharif Hossain | Cloud, DevSecOps & AI Engineer",
+    default: "Sharif Hossain | Software Engineer in Bangladesh – Cloud, DevSecOps & AI",
     template: "%s | Sharif Hossain",
   },
   description:
-    "Sharif Hossain is an Assistant Principal Software Engineer II with 10+ years of experience in cloud infrastructure, DevSecOps, cybersecurity, microservices, agentic AI/LLM systems, CI/CD, Kubernetes, AWS, and Linux systems engineering.",
+    "Sharif Hossain is an Assistant Principal Software Engineer II in Dhaka, Bangladesh with 10+ years of experience in cloud infrastructure, DevSecOps, cybersecurity, microservices, agentic AI/LLM systems, CI/CD, Kubernetes, AWS, and Linux systems engineering.",
   keywords: [
     "Sharif Hossain",
+    "Software Engineer in Bangladesh",
+    "Software Engineer Dhaka",
+    "Assistant Principal Software Engineer",
+    "DevSecOps Engineer Bangladesh",
+    "Cloud Engineer Bangladesh",
     "Cloud Engineer",
     "DevSecOps Engineer",
     "AWS",
@@ -63,9 +68,9 @@ export const metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Sharif Hossain",
-    title: "Sharif Hossain | Cloud, DevSecOps & AI Engineer",
+    title: "Sharif Hossain | Software Engineer in Bangladesh – Cloud, DevSecOps & AI",
     description:
-      "Assistant Principal Software Engineer II specialising in cloud infrastructure, DevSecOps, cybersecurity, microservices, agentic AI/LLM systems, CI/CD, and secure platform engineering.",
+      "Assistant Principal Software Engineer II in Dhaka, Bangladesh, specialising in cloud infrastructure, DevSecOps, cybersecurity, microservices, agentic AI/LLM systems, CI/CD, and secure platform engineering.",
     images: [
       {
         url: "/hero-cloudsec.png",
@@ -78,9 +83,9 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Sharif Hossain | Cloud, DevSecOps & AI Engineer",
+    title: "Sharif Hossain | Software Engineer in Bangladesh – Cloud, DevSecOps & AI",
     description:
-      "Assistant Principal Software Engineer II with 10+ years in cloud infrastructure, DevSecOps, microservices, agentic AI/LLM systems, and CI/CD systems.",
+      "Assistant Principal Software Engineer II in Dhaka, Bangladesh with 10+ years in cloud infrastructure, DevSecOps, microservices, agentic AI/LLM systems, and CI/CD systems.",
     images: ["/hero-cloudsec.png"],
   },
 
